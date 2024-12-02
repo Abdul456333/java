@@ -1,0 +1,41 @@
+import java.util.*;
+class WrongAgeException extends Exception{
+	public WrongAgeException(String message){
+		super(message);
+	}
+}
+class Father{
+	private int age;
+	public Father(int age) throws WrongAgeException{
+		if(age<0){
+			throw new WrongAgeException("Father's Age cannot be negative");
+		}
+		this.age=age;
+	}
+}
+class Son extends Father{
+	private int sonage;
+	public Son(int fatherage,int sonage) throws WrongAgeException{
+	    super(fatherage);
+		if(sonage>=fatherage){
+			throw new WrongAgeException("Father Age cannot be less than Son Age.");
+		}
+		this.sonage=sonage;
+	}
+}
+class Main{
+	public static void main(String agrs[]){
+		try{
+		    Scanner sc=new Scanner(System.in);
+		    System.out.println("Enter the Fathers Age:");
+		    int a=sc.nextInt();
+		    System.out.println("Enter the Sons Age:");
+		    int b=sc.nextInt();
+		    Son s1=new Son(a,b);
+		    System.out.println("Fathers age is:"+s1.fatherage+"Sons Age is:"+s1.sonage);
+		}
+		catch(WrongAgeException e){
+			System.out.println("Exception: "+e);
+		}
+	}
+}
