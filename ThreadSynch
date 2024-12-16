@@ -1,0 +1,55 @@
+class one extends Thread{
+
+   public synchronized void run(){
+   	System.out.print("[");
+   	System.out.print(" hello");
+   	System.out.println("]");
+
+ }
+
+}
+
+
+class two extends Thread{
+
+  public  synchronized void run(){
+  	System.out.print("[");
+  	System.out.print(" welcome ");
+	System.out.println("]");
+
+ }
+
+}
+
+
+class three extends Thread{
+
+  public synchronized void run(){
+  	System.out.print("[");
+  	System.out.print("BMSCE");
+  	System.out.println("]");
+
+ }
+
+}
+
+class ThreadSynch{
+
+ public static void main(String [] args){
+
+one one1=new one();
+two two1=new two();
+three three1=new three();
+try{
+	one1.start();
+	one1.join();
+	two1.start();
+	two1.join();
+	three1.start();
+	three1.join();
+}
+catch(InterruptedException e){
+            e.printStackTrace();
+}
+}
+}
